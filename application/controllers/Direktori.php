@@ -173,9 +173,11 @@ class Direktori extends CI_Controller
         echo json_encode($query->result());
     }
 
-    public function get_search($kode_prov, $kode_kab, $kategori, $nama_komersial)
+    public function get_search()
     {
-        echo json_encode($this->Direktori_model->get_search($kode_prov, $kode_kab, $kategori, $nama_komersial)->result());
+        echo "yeey";
+        die();
+        // echo json_encode($this->Direktori_model->get_search($kode_prov, $kode_kab, $kategori, $nama_komersial)->result());
         // echo $data["hotel"].toD;
     }
 }

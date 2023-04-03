@@ -1,4 +1,3 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('assets/images/home/home-13.jpg');">
 	<div class="hero-wrap js-fullheight" style="background-image: url('assets/images/home/home-13.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
@@ -7,19 +6,19 @@
 					<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Eksplor <br></strong> Indahnya <strong>Indonesia</strong></h1>
 					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Cari dan pilih apa yang Anda inginkan! Temukan berbagai hal menarik disini</p>
 					<div class="block-17 my-4">
-						<form action="" method="post" class="d-block d-flex">
+						<form action="Search" method="post" class="d-block d-flex">
 							<div class="fields d-block d-flex">
 								<div class="textfield-search one-third">
-									<input type="text" class="form-control" placeholder="Kode Provinsi">
+									<input type="text" name="kode_prov" class="form-control" placeholder="Kode Provinsi">
 								</div>
 								<div class="textfield-search one-third">
-									<input type="text" class="form-control" placeholder="Kode Kabupaten">
+									<input type="text" name="kode_kab"class="form-control" placeholder="Kode Kabupaten">
 								</div>
 								<div class="textfield-search one-third">
-									<input type="text" class="form-control" placeholder="Klasifikasi Usaha">
+									<input type="text" name="kode_klasifikasi" class="form-control" placeholder="Klasifikasi Usaha">
 								</div>
 							</div>
-							<a type="submit" class="search-submit btn btn-primary" href="<?= base_url('home_search_result'); ?>">Cari</a>
+							<button type="submit" class="search-submit btn btn-primary">Cari</button>
 						</form>
 					</div>
 				</div>

@@ -101,19 +101,17 @@
             <div class="col-lg-3 sidebar">
                 <div class="sidebar-wrap bg-light ftco-animate">
                     <h3 class="heading mb-4" style="text-align: center; font-weight: bold">Cari Akomodasi Keinginan Anda</h3>
-                    <form action="#">
                         <div class="fields">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Kode Provinsi">
+                                <input type="text" id="kode_prov" class="form-control" placeholder="Kode Provinsi">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Kode Kabupaten">
+                                <input type="text" id="kode_kab" class="form-control" placeholder="Kode Kabupaten">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Cari" class="btn btn-primary py-3 px-5">
+                                <input type="submit" id="cari" value="Cari" class="btn btn-primary py-3 px-5">
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
             <div class="col-lg-9">

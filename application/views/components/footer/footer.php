@@ -70,3 +70,14 @@
 </body>
 
 </html>
+
+<script>
+$("#search_home").click(function(){
+  let kode_prov = $("#kode_prov_home").val()
+  let kode_kab = $("#kode_kab_home").val()
+  let kode_klasifikasi = $("#kode_klasifikasi_home").val()
+  console.log(kode_prov);
+  console.log(kode_kab);
+  console.log(kode_klasifikasi);
+});
+</script>
