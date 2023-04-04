@@ -23,7 +23,8 @@ class Page extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->API_URL = 'http://localhost/web-direktori-pariwisata-rest-api-3.1.10/index.php/';
+		// $this->API_URL = 'http://localhost/web-direktori-pariwisata-rest-api-3.1.10/index.php/';
+         $this->API_URL = 'https://api.dirpas.zaverna.web.id/index.php/';
 	}
 	
 	public function index()

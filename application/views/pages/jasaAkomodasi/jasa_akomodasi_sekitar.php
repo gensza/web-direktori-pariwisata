@@ -17,32 +17,40 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-md-12 ftco-animate">
-                        <div class="destination">
-                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(assets/images/hotel-1.jpg);">
-                                <div class="icon d-flex justify-content-center align-items-center">
-                                    <span class="icon-search2"></span>
-                                </div>
-                            </a>
-                            <div class="text p-3">
-                                <div class="d-flex">
-                                    <div class="one">
-                                        <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>">Nama Akomodasi</a></h3>
-                                        <p class="rate">
-                                            <span>No Telephone :</span> <br />
-                                            <span>Fax :</span>
+                        <?php if ($result_search_akomodasi->status) {
+                            ?>
+                            <?php foreach ($result_search_akomodasi->data as $d) { ?>
+                                <div class="destination">
+                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                        <div class="icon d-flex justify-content-center align-items-center">
+                                            <span class="icon-search2"></span>
+                                        </div>
+                                    </a>
+                                    <div class="text p-3">
+                                        <div class="d-flex">
+                                            <div class="one">
+                                                <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                <p class="rate">
+                                                    <span>No Telephone : <?= $d->no_telp ?></span> <br />
+                                                    <span>Fax : -</span>
+                                                </p>
+                                            </div>
+                                            <div class="two">
+                                                <span class="price per-price"><small><?= $d->nama_kab ?><br><?= $d->nama_prov ?></small></span>
+                                            </div>
+                                        </div>
+                                        <p><?= $d->alamat_jalan ?></p>
+                                        <hr>
+                                        <p class="bottom-area d-flex">
+                                            <a href="<?= base_url('jasa_akomodasi_detail/'); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                         </p>
                                     </div>
-                                    <div class="two">
-                                        <span class="price per-price"><small>Nama Kabupaten<br>Nama Provinsi</small></span>
-                                    </div>
                                 </div>
-                                <p>Alamat Komersial</p>
-                                <hr>
-                                <p class="bottom-area d-flex">
-                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
-                                </p>
-                            </div>
-                        </div>
+                            <?php
+                            } 
+                        } else {
+                            echo "Data Not Found!";
+                        }?>
                     </div>
                 </div>
                 <div class="row mt-5">

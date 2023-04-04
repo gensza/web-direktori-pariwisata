@@ -23,7 +23,8 @@ class Daya_tarik_wisata extends CI_Controller
      public function __construct()
      {
          parent::__construct();
-         $this->API_URL = 'http://localhost/web-direktori-pariwisata-rest-api-3.1.10/index.php/';
+        //  $this->API_URL = 'http://localhost/web-direktori-pariwisata-rest-api-3.1.10/index.php/';
+        $this->API_URL = 'https://api.dirpas.zaverna.web.id/index.php/';
      }
 
     public function index()
@@ -58,8 +59,14 @@ class Daya_tarik_wisata extends CI_Controller
 
     public function daya_tarik_wisata_sekitar()
     {
+        $kode_prov = $this->uri->segment('3');
+        $kode_kab = $this->input->post('kode_kab');
+        $kode_klasifikasi = $this->input->post('kode_klasifikasi');
+
+        $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
+
         $this->load->view('components/header/header');
-        $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_sekitar');
+        $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_sekitar', $data);
         $this->load->view('components/footer/footer');
     }
 
@@ -86,4 +93,27 @@ class Daya_tarik_wisata extends CI_Controller
         curl_close($curl);
         return $response;
     }
+
+    public function search($kode_prov = null,$kode_kab = null,$kode_klasifikasi = null)
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $this->API_URL.'api/direktori/search?kode-prov='.$kode_prov.'&kode-kab='.$kode_kab.'&kategori='.$kode_klasifikasi.'',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Basic c2FuZGhpa2E6d3B1MTIz'
+			),
+		));
+
+		$response = curl_exec($curl);
+		$response = json_decode($response);
+		curl_close($curl);
+		return $response;
+	}
 }

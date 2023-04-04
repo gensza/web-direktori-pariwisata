@@ -40,19 +40,53 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-md-12 ftco-animate">
-                                        <?php if ($result_search) {
+                                        <?php if ($result_search->status) {
                                             ?>
                                             <?php foreach ($result_search->data as $d) { ?>
                                                 <div class="destination">
-                                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
-                                                        <div class="icon d-flex justify-content-center align-items-center">
-                                                            <span class="icon-search2"></span>
-                                                        </div>
-                                                    </a>
+                                                    <?php if($d->kategori == 'akomodasi')  {
+                                                        ?>
+                                                        <a href="<?= base_url('jasa_akomodasi_sekitar'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                                            <div class="icon d-flex justify-content-center align-items-center">
+                                                                <span class="icon-search2"></span>
+                                                            </div>
+                                                        </a>
+                                                        <?php
+                                                    }else if($d->kategori == 'PMM'){
+                                                        ?>
+                                                        <a href="<?= base_url('penyedia_makan_dan_minum_sekitar'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                                            <div class="icon d-flex justify-content-center align-items-center">
+                                                                <span class="icon-search2"></span>
+                                                            </div>
+                                                        </a>
+                                                        <?php
+                                                    }else {
+                                                        ?>
+                                                        <a href="<?= base_url('daya_tarik_wisata_sekitar'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                                            <div class="icon d-flex justify-content-center align-items-center">
+                                                                <span class="icon-search2"></span>
+                                                            </div>
+                                                        </a>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                     <div class="text p-3">
                                                         <div class="d-flex">
                                                             <div class="one">
-                                                                <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                <?php if($d->kategori == 'akomodasi') {
+                                                                    ?>
+                                                                        <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                    <?php
+                                                                }else if($d->kategori == 'PMM') {
+                                                                    ?>
+                                                                        <h3><a href="<?= base_url('penyedia_makan_dan_minum_sekitar'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                    <?php
+                                                                }else{
+                                                                    ?>
+                                                                        <h3><a href="<?= base_url('daya_tarik_wisata_sekitar'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                                 <p class="rate">
                                                                     <span>No Telephone : <?= $d->no_telp ?></span> <br />
                                                                     <span>Fax : -</span>
@@ -65,7 +99,26 @@
                                                         <p><?= $d->alamat_jalan ?></p>
                                                         <hr>
                                                         <p class="bottom-area d-flex">
-                                                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                            <?php if($d->kategori == 'akomodasi') {
+                                                                ?>
+                                                                    <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
+                                                                    <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                                                    <a href="<?= base_url('jasa_akomodasi_detail/'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                                <?php
+                                                            }else if($d->kategori == 'PMM') {
+                                                                ?>
+                                                                    <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
+                                                                    <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                                                    <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                                <?php
+                                                            }else{
+                                                                ?>
+                                                                    <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
+                                                                    <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
+                                                                    <a href="<?= base_url('daya_tarik_wisata_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -83,8 +136,7 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-md-12 ftco-animate">
-                                        <div class="destination">
-                                        <?php if ($result_search) {
+                                        <?php if ($result_search_akomodasi->status) {
                                             ?>
                                             <?php foreach ($result_search_akomodasi->data as $d) { ?>
                                                 <div class="destination">
@@ -109,7 +161,9 @@
                                                         <p><?= $d->alamat_jalan ?></p>
                                                         <hr>
                                                         <p class="bottom-area d-flex">
-                                                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                            <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
+                                                            <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                                            <a href="<?= base_url('jasa_akomodasi_detail/'); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -118,7 +172,6 @@
                                         } else {
                                             echo "Data Not Found!";
                                         }?>
-                                        </div>
                                     </div>
                                 </div>
                             </div> <!-- .col-md-8 --> 
@@ -128,12 +181,11 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-md-12 ftco-animate">
-                                        <div class="destination">
-                                        <?php if ($result_search) {
+                                        <?php if ($result_search_pmm->status) {
                                             ?>
                                             <?php foreach ($result_search_pmm->data as $d) { ?>
                                                 <div class="destination">
-                                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                                    <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
                                                         <div class="icon d-flex justify-content-center align-items-center">
                                                             <span class="icon-search2"></span>
                                                         </div>
@@ -141,7 +193,7 @@
                                                     <div class="text p-3">
                                                         <div class="d-flex">
                                                             <div class="one">
-                                                                <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                <h3><a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
                                                                 <p class="rate">
                                                                     <span>No Telephone : <?= $d->no_telp ?></span> <br />
                                                                     <span>Fax : -</span>
@@ -154,7 +206,9 @@
                                                         <p><?= $d->alamat_jalan ?></p>
                                                         <hr>
                                                         <p class="bottom-area d-flex">
-                                                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                            <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
+                                                            <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                                            <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -163,7 +217,6 @@
                                         } else {
                                             echo "Data Not Found!";
                                         }?>
-                                        </div>
                                     </div>
                                 </div>
                             </div> <!-- .col-md-8 -->
@@ -173,12 +226,11 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-md-12 ftco-animate">
-                                        <div class="destination">
-                                        <?php if ($result_search) {
+                                        <?php if ($result_search_dtw->status) {
                                             ?>
                                             <?php foreach ($result_search_dtw->data as $d) { ?>
                                                 <div class="destination">
-                                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
+                                                    <a href="<?= base_url('daya_tarik_wisata_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $d->photo_url ?>);">
                                                         <div class="icon d-flex justify-content-center align-items-center">
                                                             <span class="icon-search2"></span>
                                                         </div>
@@ -186,7 +238,7 @@
                                                     <div class="text p-3">
                                                         <div class="d-flex">
                                                             <div class="one">
-                                                                <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
+                                                                <h3><a href="<?= base_url('daya_tarik_wisata_detail'); ?>"><?= $d->nama_komersial ?></a></h3>
                                                                 <p class="rate">
                                                                     <span>No Telephone : <?= $d->no_telp ?></span> <br />
                                                                     <span>Fax : -</span>
@@ -199,7 +251,9 @@
                                                         <p><?= $d->alamat_jalan ?></p>
                                                         <hr>
                                                         <p class="bottom-area d-flex">
-                                                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                                            <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
+                                                            <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_sekitar/'.$kode_prov.'/'.$kode_kab.'/'.$kode_klasifikasi); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
+                                                            <a href="<?= base_url('daya_tarik_wisata_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -208,7 +262,6 @@
                                         } else {
                                             echo "Data Not Found!";
                                         }?>
-                                        </div>
                                     </div>
                                 </div>
                             </div> <!-- .col-md-8 -->

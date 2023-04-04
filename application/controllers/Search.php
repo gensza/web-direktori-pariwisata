@@ -36,8 +36,8 @@ class Search extends CI_Controller
         $kode_kab = $this->input->post('kode_kab');
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
         $data['result_search'] = $this->search($kode_prov,$kode_kab,$kode_klasifikasi);
-        $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
         $data['result_search_pmm'] = $this->search($kode_prov,$kode_kab,'PMM');
+        $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
         $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
         $data['kode_prov'] = $kode_prov;
         $data['kode_kab'] = $kode_kab;
