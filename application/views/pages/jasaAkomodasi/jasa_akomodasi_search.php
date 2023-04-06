@@ -101,55 +101,71 @@
             <div class="col-lg-3 sidebar">
                 <div class="sidebar-wrap bg-light ftco-animate">
                     <h3 class="heading mb-4" style="text-align: center; font-weight: bold">Cari Akomodasi Keinginan Anda</h3>
+                    <form action="Jasa_akomodasi" method="post">
                         <div class="fields">
                             <div class="form-group">
-                                <input type="text" id="kode_prov" class="form-control" placeholder="Kode Provinsi">
+                                <input type="text" name="kode_prov" class="form-control" placeholder="Kode Provinsi">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="kode_kab" class="form-control" placeholder="Kode Kabupaten">
+                                <input type="text" name="kode_kab" class="form-control" placeholder="Kode Kabupaten">
                             </div>
                             <div class="form-group">
-                                <input type="submit" id="cari" value="Cari" class="btn btn-primary py-3 px-5">
+                                <input type="submit" value="Cari" class="btn btn-primary py-3 px-5">
+                                <?php if($kode_prov || $kode_kab) {?>
+                                    <button class="btn btn-secondary mt-2 py-3 px-5" onclick="history.go(-1);">Back </button>
+                                <?php } ?>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="row">
+                    <?php if($kode_prov || $kode_kab) {?>
+                        <div class="col-md-12" style="margin-top:-20px;">
+                            <h2 class="h4">Search Result From <b><i>Kode Provinsi <?= $kode_prov ?>, Kode Kabupaten <?= $kode_kab ?></i></h2>
+                        </div>
+                    <?php } ?>
                     <div class="col-md-12 ftco-animate">
-                        <?php foreach ($akomodasi_all->data as $akomodasiAll) { ?>
-                            <div class="destination">
-                                <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $akomodasiAll->photo_url ?>);">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3">
-                                    <div class="d-flex">
-                                        <div class="one">
-                                            <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $akomodasiAll->nama_komersial ?></a></h3>
-                                            <p class="rate">
-                                                <span>No Telephone : <?= $akomodasiAll->no_telp ?></span> <br />
-                                                <span>Fax : -</span>
-                                            </p>
+                        <?php if ($result_akomodasi->status) {
+                            ?>
+                            <?php foreach ($result_akomodasi->data as $akomodasiAll) { ?>
+                                <div class="destination">
+                                    <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $akomodasiAll->photo_url ?>);">
+                                        <div class="icon d-flex justify-content-center align-items-center">
+                                            <span class="icon-search2"></span>
                                         </div>
-                                        <div class="two">
-                                            <span class="price per-price"><small><?= $akomodasiAll->nama_kab ?><br><?= $akomodasiAll->nama_prov ?></small></span>
+                                    </a>
+                                    <div class="text p-3">
+                                        <div class="d-flex">
+                                            <div class="one">
+                                                <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $akomodasiAll->nama_komersial ?></a></h3>
+                                                <p class="rate">
+                                                    <span>No Telephone : <?= $akomodasiAll->no_telp ?></span> <br />
+                                                    <span>Fax : -</span>
+                                                </p>
+                                            </div>
+                                            <div class="two">
+                                                <span class="price per-price"><small><?= $akomodasiAll->nama_kab ?><br><?= $akomodasiAll->nama_prov ?></small></span>
+                                            </div>
                                         </div>
+                                        <p><?= $akomodasiAll->alamat_jalan ?></p>
+                                        <hr>
+                                        <p class="bottom-area d-flex">
+                                            <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
+                                            <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                            <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                        </p>
                                     </div>
-                                    <p><?= $akomodasiAll->alamat_jalan ?></p>
-                                    <hr>
-                                    <p class="bottom-area d-flex">
-                                        <a href="<?= base_url('penyedia_makan_dan_minum_sekitar'); ?>" class="btn-first-2 float-left">PMM Sekitar</a>
-                                        <a href="<?= base_url('daya_tarik_wisata_sekitar'); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
-                                        <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
-                                    </p>
                                 </div>
-                            </div>
-                        <?php } ?>
+                                <?php 
+                            } 
+                        } else {
+                            echo "Data Not Found!";
+                        }?>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <!-- <div class="row mt-5">
                     <div class="col text-center">
                         <div class="block-27">
                             <ul>
@@ -163,7 +179,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div> <!-- .col-md-8 -->
         </div>
     </div>

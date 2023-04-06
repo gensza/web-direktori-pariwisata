@@ -30,9 +30,19 @@ class Penyedia_makan_dan_minum extends CI_Controller
     // HALAMAN VIEW
     public function index()
     {
-        $this->load->view('components/header/header');
+        $kode_prov = $this->input->post('kode_prov');
+        $kode_kab = $this->input->post('kode_kab');
 
-        $data['PMM_all'] = $this->PMM_all();
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
+
+        if($kode_prov || $kode_kab) {
+            $data['result_pmm'] = $this->search($kode_prov,$kode_kab,'akomodasi');
+        }else{
+            $data['result_pmm'] = $this->PMM_all();
+        }
+
+        $this->load->view('components/header/header');
         $this->load->view('pages/penyediaMakanDanMinum/penyedia_makan_dan_minum_search', $data);
         $this->load->view('components/footer/footer');
     }

@@ -29,9 +29,19 @@ class Daya_tarik_wisata extends CI_Controller
 
     public function index()
     {
-        $this->load->view('components/header/header');
+        $kode_prov = $this->input->post('kode_prov');
+        $kode_kab = $this->input->post('kode_kab');
 
-        $data['DTW_all'] = $this->DTW_all();
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
+        
+        if($kode_prov || $kode_kab) {
+            $data['result_dtw'] = $this->search($kode_prov,$kode_kab,'akomodasi');
+        }else{
+            $data['result_dtw'] = $this->DTW_all();
+        }
+
+        $this->load->view('components/header/header');
         $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_search', $data);
         $this->load->view('components/footer/footer');
     }

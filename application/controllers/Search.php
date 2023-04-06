@@ -35,10 +35,35 @@ class Search extends CI_Controller
         $kode_prov = $this->input->post('kode_prov');
         $kode_kab = $this->input->post('kode_kab');
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
-        $data['result_search'] = $this->search($kode_prov,$kode_kab,$kode_klasifikasi);
-        $data['result_search_pmm'] = $this->search($kode_prov,$kode_kab,'PMM');
-        $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
-        $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
+        $object = new stdClass();
+        $object->status = false;
+
+        if(empty($kode_prov) && empty($kode_kab) && $kode_klasifikasi) {
+            
+            $data['result_search'] = $this->search($kode_prov,$kode_kab,$kode_klasifikasi);
+            if($kode_klasifikasi == 'PMM') {
+                $data['result_search_pmm'] = $this->search($kode_prov,$kode_kab,'PMM');
+                $data['result_search_akomodasi'] = $object;
+                $data['result_search_dtw'] = $object;
+            }else if($kode_klasifikasi == 'akomodasi') {
+                $data['result_search_pmm'] = $object;
+                $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
+                $data['result_search_dtw'] = $object;
+            }else if($kode_klasifikasi == 'DTW') {
+                $data['result_search_pmm'] = $object;
+                $data['result_search_akomodasi'] = $object;
+                $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
+            }else{
+                $data['result_search_pmm'] = $object;
+                $data['result_search_akomodasi'] = $object;
+                $data['result_search_dtw'] = $object;
+            }
+        }else{
+            $data['result_search'] = $this->search($kode_prov,$kode_kab,$kode_klasifikasi);
+            $data['result_search_pmm'] = $this->search($kode_prov,$kode_kab,'PMM');
+            $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
+            $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
+        }
         $data['kode_prov'] = $kode_prov;
         $data['kode_kab'] = $kode_kab;
         $data['kode_klasifikasi'] = $kode_klasifikasi;
