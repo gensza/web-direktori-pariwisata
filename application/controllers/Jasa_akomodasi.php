@@ -75,6 +75,14 @@ class Jasa_akomodasi extends CI_Controller
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
 
         $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
+  
+        if($data['result_search_akomodasi']->status) {
+            $data['first_data'] = $data['result_search_akomodasi']->data[0];
+        }else{
+            $data['first_data'] = false;
+        }
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
 
         $this->load->view('components/header/header');
         $this->load->view('pages/jasaAkomodasi/jasa_akomodasi_sekitar', $data);

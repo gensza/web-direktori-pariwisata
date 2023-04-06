@@ -75,6 +75,13 @@ class Penyedia_makan_dan_minum extends CI_Controller
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
 
         $data['result_search_pmm'] = $this->search($kode_prov,$kode_kab,'PMM');
+        if($data['result_search_pmm']->status) {
+            $data['first_data'] = $data['result_search_pmm']->data[0];
+        }else{
+            $data['first_data'] = false;
+        }
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
 
         $this->load->view('components/header/header');
         $this->load->view('pages/penyediaMakanDanMinum/penyedia_makan_dan_minum_sekitar', $data);

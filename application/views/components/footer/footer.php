@@ -72,12 +72,17 @@
 </html>
 
 <script>
-$("#search_home").click(function(){
-  let kode_prov = $("#kode_prov_home").val()
-  let kode_kab = $("#kode_kab_home").val()
-  let kode_klasifikasi = $("#kode_klasifikasi_home").val()
-  console.log(kode_prov);
-  console.log(kode_kab);
-  console.log(kode_klasifikasi);
+// Save the scroll position in local storage when the page is unloaded
+window.addEventListener('beforeunload', function() {
+  localStorage.setItem('scrollPosition', window.scrollY);
+});
+
+// Retrieve the scroll position from local storage when the page is loaded
+window.addEventListener('load', function() {
+  var scrollPosition = localStorage.getItem('scrollPosition');
+  if (scrollPosition !== null) {
+    window.scrollTo(0, scrollPosition);
+    localStorage.removeItem('scrollPosition');
+  }
 });
 </script>

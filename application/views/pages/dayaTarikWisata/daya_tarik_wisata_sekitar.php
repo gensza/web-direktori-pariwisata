@@ -4,7 +4,16 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                 <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="<?= base_url(); ?>">Home</a></span>/ <span> DTW Sekitar</span></p>
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">DTW di Sekitar ......</h1>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">DTW di Sekitar</h1>
+                <?php if($first_data) {?>
+                    <?php if($kode_prov || $kode_kab) { ?>
+                        <h2 class="mb-3 bread text-white"><?= $first_data->nama_prov ?> | <?= $first_data->nama_kab ?></h2>
+                    <?php }else{ ?>
+                        <h2 class="mb-3 bread text-white">Semua Provinsi | Semua Kabupaten</h2>
+                    <?php } ?>
+                <?php }else{ ?>
+                    <h2 class="mb-3 bread text-white">Data Not Found!</h2>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -53,7 +62,7 @@
                         }?>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <!-- <div class="row mt-5">
                     <div class="col text-center">
                         <div class="block-27">
                             <ul>
@@ -67,7 +76,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div> <!-- .col-md-8 -->
         </div>
     </div>

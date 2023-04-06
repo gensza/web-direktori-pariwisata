@@ -74,6 +74,13 @@ class Daya_tarik_wisata extends CI_Controller
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
 
         $data['result_search_dtw'] = $this->search($kode_prov,$kode_kab,'DTW');
+        if($data['result_search_dtw']->status) {
+            $data['first_data'] = $data['result_search_dtw']->data[0];
+        }else{
+            $data['first_data'] = false;
+        }
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
 
         $this->load->view('components/header/header');
         $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_sekitar', $data);
