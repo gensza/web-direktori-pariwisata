@@ -47,9 +47,6 @@
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
     </svg></div>
 
-
-<script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/jquery.easing.1.3.js'); ?>"></script>
@@ -67,22 +64,10 @@
 <script src="<?= base_url('assets/js/main.js'); ?>"></script>
 <script src="<?= base_url('assets/js/filter-search.js'); ?>"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
 </body>
 
 </html>
-
-<script>
-// Save the scroll position in local storage when the page is unloaded
-window.addEventListener('beforeunload', function() {
-  localStorage.setItem('scrollPosition', window.scrollY);
-});
-
-// Retrieve the scroll position from local storage when the page is loaded
-window.addEventListener('load', function() {
-  var scrollPosition = localStorage.getItem('scrollPosition');
-  if (scrollPosition !== null) {
-    window.scrollTo(0, scrollPosition);
-    localStorage.removeItem('scrollPosition');
-  }
-});
-</script>

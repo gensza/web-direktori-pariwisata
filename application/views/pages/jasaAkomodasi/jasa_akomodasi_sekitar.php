@@ -51,7 +51,7 @@
                                         <p><?= $d->alamat_jalan ?></p>
                                         <hr>
                                         <p class="bottom-area d-flex">
-                                            <a href="<?= base_url('jasa_akomodasi_detail/'); ?>" class="btn-first-3 ml-auto">Lihat</a>
+                                            <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_detail/'.$d->id); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                         </p>
                                     </div>
                                 </div>

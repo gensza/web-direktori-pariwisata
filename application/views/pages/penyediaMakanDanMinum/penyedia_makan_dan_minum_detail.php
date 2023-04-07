@@ -4,7 +4,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                 <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="<?= base_url(); ?>">Home</a></span>/ <span class="mr-2"><a href="<?= base_url('daya_tarik_wisata_search'); ?>">PMM</a></span>/ <span>Detail PMM</span></p>
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Nama PMM</h1>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><?= $d_p->nama_komersial ?></h1>
             </div>
         </div>
     </div>
@@ -19,21 +19,15 @@
                     <div class="col-md-12 ftco-animate">
                         <div class="single-slider owl-carousel">
                             <div class="item">
-                                <div class="hotel-img" style="background-image: url(assets/images/jasaAkomodasi/jasa-akomodasi-8.jpg);"></div>
-                            </div>
-                            <div class="item">
-                                <div class="hotel-img" style="background-image: url(assets/images/jasaAkomodasi/jasa-akomodasi-9.jpg);"></div>
-                            </div>
-                            <div class="item">
-                                <div class="hotel-img" style="background-image: url(assets/images/jasaAkomodasi/jasa-akomodasi-10.jpg);"></div>
+                                <div class="hotel-img" style="background-image: url(<?= $d_p->photo_url ?>);"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-                        <h2><strong>Nama PMM</strong></h2>
+                        <h2><strong><?= $d_p->nama_komersial ?></strong></h2>
                         <p class="rate mb-1">
-                            <span class="star"><strong>Kodepos :</strong></span> <br />
-                            <span class="loc"><a><i class="icon-map"></i> Alamat PMM</a></span>
+                            <span class="star"><strong>Kodepos : <?= $d_p->kodepos ?></strong></span> <br />
+                            <span class="loc"><a><i class="icon-map"></i> <?= $d_p->alamat_jalan ?></a></span>
                         </p>
                     </div>
                     <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
@@ -47,7 +41,7 @@
                                         </div>
                                         <div id="menuone" class="collapse">
                                             <div class="card-body">
-                                                <p><strong>Nomor Telephone PMM</strong></p>
+                                                <p><strong><?= $d_p->no_telp ?></strong></p>
                                             </div>
                                         </div>
                                     </div>
@@ -58,7 +52,7 @@
                                         </div>
                                         <div id="menutwo" class="collapse">
                                             <div class="card-body">
-                                                <a href="https://twitter.com/oyorooms" style="color: black;" target="_blank"><strong>Twitter PMM</strong></a>
+                                                <a href="https://twitter.com/oyorooms" style="color: black;" target="_blank"><strong><?= $d_p->twitter ?></strong></a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +63,7 @@
                                         </div>
                                         <div id="menu3" class="collapse">
                                             <div class="card-body">
-                                                <a href="https://www.oyorooms.com/id/47842/?utm_source=GMB_ID&utm_medium=Organic&utm_campaign=ID_BDG025&latitude=-6.8664655&longitude=107.6060974&locale=id" style="color: black;" target="_blank"><strong>Website PMM</strong></a>
+                                                <a href="https://www.oyorooms.com/id/47842/?utm_source=GMB_ID&utm_medium=Organic&utm_campaign=ID_BDG025&latitude=-6.8664655&longitude=107.6060974&locale=id" style="color: black;" target="_blank"><strong><?= $d_p->website ?></strong></a>
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +75,7 @@
                                         </div>
                                         <div id="menu4" class="collapse">
                                             <div class="card-body">
-                                                <a href="https://www.facebook.com/oyorooms" style="color: black;" target="_blank"><strong>Facebook PMM</strong></a>
+                                                <a href="https://www.facebook.com/oyorooms" style="color: black;" target="_blank"><strong><?= $d_p->facebook ?></strong></a>
                                             </div>
                                         </div>
                                     </div>

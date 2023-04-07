@@ -39,64 +39,66 @@
             <div class="col-lg-9">
                 <div class="row">
                     <?php if($kode_prov || $kode_kab) {?>
-                        <div class="col-md-12" style="margin-top:-20px;">
+                        <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
                             <h2 class="h4">Search Result From <b><i>Kode Provinsi <?= $kode_prov ?>, Kode Kabupaten <?= $kode_kab ?></i></h2>
+                        </div>
+                    <?php }else { ?>
+                        <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
+                            <h2 class="h4"><b><i> Menampilkan Semua Penyedia Makan dan Minum</i></b></h2>
                         </div>
                     <?php } ?>
                     <div class="col-md-12 ftco-animate">
                         <?php if ($result_pmm->status) {
                         ?>
+                            <table id="example" class="table table-borderless" style="width:100%;padding-top:0px">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                             <?php foreach ($result_pmm->data as $pmmAll) { ?>
-                                <div class="destination">
-                                    <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $pmmAll->photo_url ?>);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-search2"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <h3><a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>"><?= $pmmAll->nama_komersial ?></a></h3>
-                                                <p class="rate">
-                                                    <span>No Telephone : <?= $pmmAll->no_telp ?></span> <br />
-                                                    <span>Fax : -</span>
+                                <tr>
+                                    <td>
+                                        <div class="destination">
+                                            <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $pmmAll->photo_url ?>);">
+                                                <div class="icon d-flex justify-content-center align-items-center">
+                                                    <span class="icon-search2"></span>
+                                                </div>
+                                            </a>
+                                            <div class="text p-3">
+                                                <div class="d-flex">
+                                                    <div class="one">
+                                                        <h3><a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>"><?= $pmmAll->nama_komersial ?></a></h3>
+                                                        <p class="rate">
+                                                            <span>No Telephone : <?= $pmmAll->no_telp ?></span> <br />
+                                                            <span>Fax : -</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="two">
+                                                        <span class="price per-price"><small><?= $pmmAll->nama_kab ?><br><?= $pmmAll->nama_prov ?></small></span>
+                                                    </div>
+                                                </div>
+                                                <p><?= $pmmAll->alamat_jalan ?></p>
+                                                <hr>
+                                                <p class="bottom-area d-flex">
+                                                    <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
+                                                    <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
+                                                    <a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_detail/'.$pmmAll->id); ?>" class="btn-first-3 ml-auto">Lihat</a>
                                                 </p>
                                             </div>
-                                            <div class="two">
-                                                <span class="price per-price"><small><?= $pmmAll->nama_kab ?><br><?= $pmmAll->nama_prov ?></small></span>
-                                            </div>
                                         </div>
-                                        <p><?= $pmmAll->alamat_jalan ?></p>
-                                        <hr>
-                                        <p class="bottom-area d-flex">
-                                            <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">Jasa Akomodasi Sekitar</a>
-                                            <a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_sekitar/'.$kode_prov.'/'.$kode_kab); ?>" class="btn-first-2 float-left">DTW Sekitar</a>
-                                            <a href="<?= base_url('penyedia_makan_dan_minum_detail'); ?>" class="btn-first-3 ml-auto">Lihat</a>
-                                        </p>
-                                    </div>
-                                </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
                             <?php 
-                            } 
-                        } else {
-                            echo "Data Not Found!";
+                            } else {
+                                echo "Data Not Found!";
                         }?>
                     </div>
                 </div>
-                <!-- <div class="row mt-5">
-                    <div class="col text-center">
-                        <div class="block-27">
-                            <ul>
-                                <li><a href="#">&lt;</a></li>
-                                <li class="active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&gt;</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
             </div> <!-- .col-md-8 -->
         </div>
     </div>
@@ -157,3 +159,28 @@
         </div>
     </div>
 </section>
+<script>
+$(document).ready(function () {
+    // Save the scroll position in local storage when the page is unloaded
+    window.addEventListener('beforeunload', function() {
+    localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    // Retrieve the scroll position from local storage when the page is loaded
+    window.addEventListener('load', function() {
+    var scrollPosition = localStorage.getItem('scrollPosition');
+        if (scrollPosition !== null) {
+            window.scrollTo(0, scrollPosition);
+            localStorage.removeItem('scrollPosition');
+        }
+    });
+
+    $('#example').DataTable({
+        "bLengthChange": false,
+        "bFilter": false,
+        "bInfo": true,
+        "bAutoWidth": false,
+        "ordering": false
+    });
+});
+</script>

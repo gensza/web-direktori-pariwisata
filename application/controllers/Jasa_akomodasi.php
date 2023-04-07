@@ -63,15 +63,19 @@ class Jasa_akomodasi extends CI_Controller
 
     public function jasa_akomodasi_detail()
     {
+        $id = $this->uri->segment('3');
+        $result = $this->detail($id);
+        $data['d_a'] = $result->data[0];
+
         $this->load->view('components/header/header');
-        $this->load->view('pages/jasaAkomodasi/jasa_akomodasi_detail');
+        $this->load->view('pages/jasaAkomodasi/jasa_akomodasi_detail',$data);
         $this->load->view('components/footer/footer');
     }
 
     public function jasa_akomodasi_sekitar()
     {
         $kode_prov = $this->uri->segment('3');
-        $kode_kab = $this->input->post('kode_kab');
+        $kode_kab = $this->uri->segment('4');
         $kode_klasifikasi = $this->input->post('kode_klasifikasi');
 
         $data['result_search_akomodasi'] = $this->search($kode_prov,$kode_kab,'akomodasi');
@@ -119,6 +123,29 @@ class Jasa_akomodasi extends CI_Controller
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => $this->API_URL.'api/direktori/search?kode-prov='.$kode_prov.'&kode-kab='.$kode_kab.'&kategori='.$kode_klasifikasi.'',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Basic c2FuZGhpa2E6d3B1MTIz'
+			),
+		));
+
+		$response = curl_exec($curl);
+		$response = json_decode($response);
+		curl_close($curl);
+		return $response;
+	}
+
+    public function detail($id = null)
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $this->API_URL.'api/direktori/detail?id='.$id,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,

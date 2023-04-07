@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
     <link href="<?= base_url('assets/css/open-iconic-bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/animate.css'); ?>" rel="stylesheet">
@@ -57,3 +60,6 @@
         </div>
     </nav>
     <!-- END nav -->
+
+    <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
