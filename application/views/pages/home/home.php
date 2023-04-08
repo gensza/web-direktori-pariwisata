@@ -74,14 +74,14 @@
 						<?php foreach ($akomodasi_ringkas->data as $akomodasi) { ?>
 							<div class="item">
 								<div class="destination">
-									<a href="<?= base_url('jasa_akomodasi_search_result_by_provinsi'); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(assets/images/home/home-8.jpg);">
+									<a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_search_result_by_provinsi/'.$akomodasi->kode_prov); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?= $akomodasi->photo_url  ?>);">
 										<div class="icon d-flex justify-content-center align-items-center">
 											<span class="icon-search2"></span>
 										</div>
 									</a>
 									<div class="text p-3">
 										<span class="listing"><?= $akomodasi->jumlah ?> Jasa Akomodasi di</span>
-										<h3><a href="<?= base_url('jasa_akomodasi_search_result_by_provinsi'); ?>"><?= $akomodasi->nama_prov ?></a></h3>
+										<h3><a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_search_result_by_provinsi/'.$akomodasi->kode_prov); ?>"><?= $akomodasi->nama_prov ?></a></h3>
 									</div>
 								</div>
 							</div>
@@ -107,14 +107,14 @@
 						<?php foreach ($PMM_ringkas->data as $PMM) { ?>
 							<div class="item">
 								<div class="destination">
-									<a href="<?= base_url('penyedia_makan_dan_minum_search_result_by_provinsi'); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(assets/images/home/home-9.jpg);">
+									<a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_search_result_by_provinsi/'.$PMM->kode_prov); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?= $PMM->photo_url  ?>);">
 										<div class="icon d-flex justify-content-center align-items-center">
 											<span class="icon-search2"></span>
 										</div>
 									</a>
 									<div class="text p-3">
 										<span class="listing"><?= $PMM->jumlah ?> PMM di</span>
-										<h3><a href="<?= base_url('penyedia_makan_dan_minum_search_result_by_provinsi'); ?>"><?= $PMM->nama_prov ?></a></h3>
+										<h3><a href="<?= base_url('Penyedia_makan_dan_minum/penyedia_makan_dan_minum_search_result_by_provinsi/'.$PMM->kode_prov); ?>"><?= $PMM->nama_prov ?></a></h3>
 									</div>
 								</div>
 							</div>
@@ -140,14 +140,14 @@
 						<?php foreach ($DTW_ringkas->data as $DTW) { ?>
 							<div class="item">
 								<div class="destination">
-									<a href="<?= base_url('daya_tarik_wisata_search_result_by_provinsi'); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(assets/images/home/home-7.jpg);">
+									<a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_search_result_by_provinsi/'.$DTW->kode_prov); ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?= $DTW->photo_url ?>);">
 										<div class="icon d-flex justify-content-center align-items-center">
 											<span class="icon-search2"></span>
 										</div>
 									</a>
 									<div class="text p-3">
-										<span class="listing"><?= $DTW->jumlah ?> DTW di</span>
-										<h3><a href="<?= base_url('daya_tarik_wisata_search_result_by_provinsi'); ?>"><?= $DTW->nama_prov ?></a></h3>
+										<span class="listing"><?= $DTW->jumlah ?> Daya tarik Wisata di</span>
+										<h3><a href="<?= base_url('Daya_tarik_wisata/daya_tarik_wisata_search_result_by_provinsi/'.$DTW->kode_prov); ?>"><?= $DTW->nama_prov ?></a></h3>
 									</div>
 								</div>
 							</div>

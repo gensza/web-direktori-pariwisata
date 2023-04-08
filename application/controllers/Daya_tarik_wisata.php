@@ -55,8 +55,26 @@ class Daya_tarik_wisata extends CI_Controller
 
     public function daya_tarik_wisata_search_result_by_provinsi()
     {
+        $kode_prov = $this->uri->segment('3');
+        $kode_kab = $this->input->post('kode_kab');
+
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
+
+        if($kode_kab) {
+            $data['result_dtw'] = $this->search($kode_prov,$kode_kab,'dtw');
+        }else{
+            $data['result_dtw'] =$this->search($kode_prov,null,'dtw');
+        }
+
+        if($data['result_dtw']->status) {
+            $data['first_data'] = $data['result_dtw']->data[0];
+        }else{
+            $data['first_data'] = false;
+        }
+
         $this->load->view('components/header/header');
-        $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_search_result_by_provinsi');
+        $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_search_result_by_provinsi',$data);
         $this->load->view('components/footer/footer');
     }
 

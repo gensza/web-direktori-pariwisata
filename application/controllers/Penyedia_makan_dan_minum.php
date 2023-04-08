@@ -56,8 +56,26 @@ class Penyedia_makan_dan_minum extends CI_Controller
 
     public function penyedia_makan_dan_minum_search_result_by_provinsi()
     {
+        $kode_prov = $this->uri->segment('3');
+        $kode_kab = $this->input->post('kode_kab');
+
+        $data['kode_prov'] = $kode_prov;
+        $data['kode_kab'] = $kode_kab;
+
+        if($kode_kab) {
+            $data['result_pmm'] = $this->search($kode_prov,$kode_kab,'pmm');
+        }else{
+            $data['result_pmm'] =$this->search($kode_prov,null,'pmm');
+        }
+
+        if($data['result_pmm']->status) {
+            $data['first_data'] = $data['result_pmm']->data[0];
+        }else{
+            $data['first_data'] = false;
+        }
+        
         $this->load->view('components/header/header');
-        $this->load->view('pages/penyediaMakanDanMinum/penyedia_makan_dan_minum_search_result_by_provinsi');
+        $this->load->view('pages/penyediaMakanDanMinum/penyedia_makan_dan_minum_search_result_by_provinsi', $data);
         $this->load->view('components/footer/footer');
     }
 

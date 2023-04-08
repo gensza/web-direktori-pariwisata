@@ -36,6 +36,7 @@ class Page extends CI_Controller
 		$data['PMM_ringkas'] = $this->PMM_ringkas();
 		$data['data_direktori_ringkas'] = $this->data_direktori_ringkas();
 		$data['akomodasi_filter'] = $this->akomodasi_filter();
+
 		$this->load->view('pages/home/home', $data);
 
 		$this->load->view('components/footer/footer.php');
