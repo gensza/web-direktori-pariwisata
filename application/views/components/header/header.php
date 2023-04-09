@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/pamphlet.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/pamphlet.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/pamphlet.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/images/pamphlet.png">
-    <link rel="shortcut icon" href="assets/images/pamphlet.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?= base_url('assets/images/pamphlet.png'); ?>">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?= base_url('assets/images/pamphlet.png'); ?>">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?= base_url('assets/images/pamphlet.png'); ?>">
+    <link rel="apple-touch-icon-precomposed" href="<?= base_url('assets/images/pamphlet.png'); ?>">
+    <link rel="shortcut icon" href="<?= base_url('assets/images/pamphlet.png'); ?>">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">

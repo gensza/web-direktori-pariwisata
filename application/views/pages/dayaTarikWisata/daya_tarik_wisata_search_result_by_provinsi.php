@@ -1,4 +1,4 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('https://www.pegipegi.com/travel/wp-content/uploads/2015/10/Pulau-Panjang-jepara.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url(<?= base_url('assets/images/home/home-18.jpg') ?>);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -130,6 +130,11 @@ $(document).ready(function () {
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example').on('page.dt', function() {
+        // Your code here
+        $("html, body").animate({ scrollTop: $('.ftco-degree-bg').offset().top }, "slow");
     });
 });
 </script>

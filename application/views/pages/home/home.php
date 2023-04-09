@@ -234,7 +234,7 @@
 						<h2>Ada Pertanyaan?</h2>
 						<p>Hubungi saja kami dengan mengakses halaman berikut</p>
 						<div class="row d-flex justify-content-center mt-5">
-							<a href="<?= base_url('tentang'); ?>" class="btn-first-4">Selengkapnya</a>
+							<a href="<?= base_url('tentang'); ?>" class="btn-first-4" style="width:30%;">Selengkapnya</a>
 						</div>
 					</div>
 				</div>

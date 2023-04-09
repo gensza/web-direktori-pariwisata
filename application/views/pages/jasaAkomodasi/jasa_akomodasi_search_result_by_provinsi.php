@@ -1,4 +1,4 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('https://origin.pegipegi.com/jalan/images/pict1L/Y0/Y973390/Y97339010PM.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url(<?= base_url('assets/images/home/home-34.jpg') ?>);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -130,6 +130,11 @@ $(document).ready(function () {
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example').on('page.dt', function() {
+        // Your code here
+        $("html, body").animate({ scrollTop: $('.ftco-degree-bg').offset().top }, "slow");
     });
 });
 </script>

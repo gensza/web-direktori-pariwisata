@@ -1,4 +1,4 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/19/5e/de/2a/img20190924155536-largejpg.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url(<?= base_url('assets/images/makanMinum/makan-minum-7.jpg') ?>);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -130,6 +130,11 @@ $(document).ready(function () {
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example').on('page.dt', function() {
+        // Your code here
+        $("html, body").animate({ scrollTop: $('.ftco-degree-bg').offset().top }, "slow");
     });
 });
 </script>

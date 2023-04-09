@@ -373,7 +373,7 @@
                     <h2>Ada Pertanyaan?</h2>
                     <p>Hubungi saja kami dengan mengakses halaman berikut</p>
                     <div class="row d-flex justify-content-center mt-5">
-                        <a href="<?= base_url('tentang'); ?>" class="btn-first-4">Selengkapnya</a>
+                        <a href="<?= base_url('tentang'); ?>" class="btn-first-4" style="width:30%">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -391,12 +391,26 @@ $(document).ready(function () {
         "ordering": false
     });
 
+    $('#example1').on('page.dt', function() {
+    // Your code here
+        $('html, body').animate({
+        scrollTop: $('#v-pills-all').offset().top
+        },0);
+    });
+
     $('#example2').DataTable({
         "bLengthChange": false,
         "bFilter": false,
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example2').on('page.dt', function() {
+    // Your code here
+        $('html, body').animate({
+        scrollTop: $('#v-pills-whatwedo-tab').offset().top
+        },0);
     });
 
     $('#example3').DataTable({
@@ -407,12 +421,26 @@ $(document).ready(function () {
         "ordering": false
     });
 
+    $('#example3').on('page.dt', function() {
+    // Your code here
+        $('html, body').animate({
+        scrollTop: $('#v-pills-mission-tab').offset().top
+        },0);
+    });
+
     $('#example4').DataTable({
         "bLengthChange": false,
         "bFilter": false,
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example4').on('page.dt', function() {
+    // Your code here
+        $('html, body').animate({
+        scrollTop: $('#v-pills-goal-tab').offset().top
+        },0);
     });
 });
 </script>

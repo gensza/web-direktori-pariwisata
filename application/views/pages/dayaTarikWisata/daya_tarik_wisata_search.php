@@ -171,7 +171,7 @@
                     <h2>Ada Pertanyaan?</h2>
                     <p>Hubungi saja kami dengan mengakses halaman berikut</p>
                     <div class="row d-flex justify-content-center mt-5">
-                        <a href="<?= base_url('tentang'); ?>" class="btn-first-4">Selengkapnya</a>
+                        <a href="<?= base_url('tentang'); ?>" class="btn-first-4" style="width:30%">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -202,6 +202,13 @@ $(document).ready(function () {
         "bInfo": true,
         "bAutoWidth": false,
         "ordering": false
+    });
+
+    $('#example').on('page.dt', function() {
+    // Your code here
+        $('html, body').animate({
+        scrollTop: $('.ftco-degree-bg').offset().top
+        },0);
     });
 });
 </script>
