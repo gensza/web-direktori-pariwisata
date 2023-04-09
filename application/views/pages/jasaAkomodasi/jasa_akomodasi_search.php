@@ -122,10 +122,14 @@
             <div class="col-lg-9">
                 <div class="row">
                     <?php if($kode_prov || $kode_kab) {?>
+                        <input type="hidden" id="hide_kode_prov" value="<?= $kode_prov ?>">
+                        <input type="hidden" id="hide_kode_kab" value="<?= $kode_kab ?>">
                         <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
                             <h2 class="h4">Search Result From <b><i>Kode Provinsi <?= $kode_prov ?>, Kode Kabupaten <?= $kode_kab ?></i></h2>
                         </div>
                     <?php }else { ?>
+                        <input type="hidden" id="hide_kode_prov" value="">
+                        <input type="hidden" id="hide_kode_kab" value="">
                         <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
                             <h2 class="h4"><b><i> Menampilkan Semua Akomodasi</i></b></h2>
                         </div>
@@ -144,7 +148,7 @@
                                     <tr>
                                         <td>
                                             <div class="destination">
-                                                <a href="<?= base_url('jasa_akomodasi_detail'); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $akomodasiAll->photo_url ?>);">
+                                                <a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_detail/'.$akomodasiAll->id); ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= $akomodasiAll->photo_url ?>);">
                                                     <div class="icon d-flex justify-content-center align-items-center">
                                                         <span class="icon-search2"></span>
                                                     </div>
@@ -152,7 +156,7 @@
                                                 <div class="text p-3">
                                                     <div class="d-flex">
                                                         <div class="one">
-                                                            <h3><a href="<?= base_url('jasa_akomodasi_detail'); ?>"><?= $akomodasiAll->nama_komersial ?></a></h3>
+                                                            <h3><a href="<?= base_url('Jasa_akomodasi/jasa_akomodasi_detail/'.$akomodasiAll->id); ?>"><?= $akomodasiAll->nama_komersial ?></a></h3>
                                                             <p class="rate">
                                                                 <span>No Telephone : <?= $akomodasiAll->no_telp ?></span> <br />
                                                                 <span>Fax : -</span>
@@ -245,19 +249,21 @@
 <script>
 
 $(document).ready(function () {
-    // Save the scroll position in local storage when the page is unloaded
-    window.addEventListener('beforeunload', function() {
-    localStorage.setItem('scrollPosition', window.scrollY);
-    });
+    if($('#hide_kode_prov').val() || $('#hide_kode_kab').val()) {
+        // Save the scroll position in local storage when the page is unloaded
+        window.addEventListener('beforeunload', function() {
+        localStorage.setItem('scrollPosition', window.scrollY);
+        });
 
-    // Retrieve the scroll position from local storage when the page is loaded
-    window.addEventListener('load', function() {
-    var scrollPosition = localStorage.getItem('scrollPosition');
-        if (scrollPosition !== null) {
-            window.scrollTo(0, scrollPosition);
-            localStorage.removeItem('scrollPosition');
-        }
-    });
+        // Retrieve the scroll position from local storage when the page is loaded
+        window.addEventListener('load', function() {
+        var scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition !== null) {
+                window.scrollTo(0, scrollPosition);
+                localStorage.removeItem('scrollPosition');
+            }
+        });
+    }
 
     $('#example').DataTable({
         "bLengthChange": false,

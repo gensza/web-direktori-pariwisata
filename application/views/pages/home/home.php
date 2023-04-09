@@ -8,13 +8,13 @@
 					<div class="block-17 my-4">
 						<form action="Search" method="post" class="d-block d-flex">
 							<div class="fields d-block d-flex">
-								<div class="textfield-search one-third">
+								<div class="textfield-search one-third border">
 									<input type="text" name="kode_prov" class="form-control" placeholder="Kode Provinsi">
 								</div>
-								<div class="textfield-search one-third">
+								<div class="textfield-search one-third border">
 									<input type="text" name="kode_kab"class="form-control" placeholder="Kode Kabupaten">
 								</div>
-								<div class="textfield-search one-third">
+								<div class="textfield-search one-third border">
 									<input type="text" name="kode_klasifikasi" class="form-control" placeholder="Klasifikasi Usaha">
 								</div>
 							</div>

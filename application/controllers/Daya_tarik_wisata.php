@@ -89,6 +89,16 @@ class Daya_tarik_wisata extends CI_Controller
         $this->load->view('components/footer/footer');
     }
 
+    public function dtw_download()
+    {
+        $id = $this->uri->segment('3');
+        $result = $this->detail($id);
+        $data['d_a'] = $result->data[0];
+        $data['nama_file'] = 'daya_tarik_wisata';
+
+        $this->load->view('pages/dayaTarikWisata/daya_tarik_wisata_download',$data);
+    }
+
     public function daya_tarik_wisata_sekitar()
     {
         $kode_prov = $this->uri->segment('3');

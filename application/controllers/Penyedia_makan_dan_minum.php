@@ -90,6 +90,16 @@ class Penyedia_makan_dan_minum extends CI_Controller
         $this->load->view('components/footer/footer');
     }
 
+    public function pmm_download()
+    {
+        $id = $this->uri->segment('3');
+        $result = $this->detail($id);
+        $data['d_a'] = $result->data[0];
+        $data['nama_file'] = 'penyedia_makan_minum';
+
+        $this->load->view('pages/penyediaMakanDanMinum/penyedia_makan_dan_minum_download',$data);
+    }
+
     public function penyedia_makan_dan_minum_sekitar()
     {
         $kode_prov = $this->uri->segment('3');

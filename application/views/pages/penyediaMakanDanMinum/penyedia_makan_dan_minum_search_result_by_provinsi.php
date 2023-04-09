@@ -40,10 +40,12 @@
             <div class="col-lg-9">
                 <div class="row">
                     <?php if($kode_kab) {?>
+                        <input type="hidden" id="hide_kode_kab" value="<?= $kode_kab ?>">
                         <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
                             <h2 class="h4">Search Result From <b><i>Kode Kab <?= $kode_kab ?></i></h2>
                         </div>
                     <?php }else { ?>
+                        <input type="hidden" id="hide_kode_kab" value="">
                         <div class="col-md-12 ml-4" style="margin-bottom:-30px;">
                             <h2 class="h4"><b><i> Menampilkan Semua Kuliner di Kode Provinsi <?= $kode_prov ?></i></b></h2>
                         </div>
@@ -106,19 +108,21 @@
 </section> <!-- .section -->
 <script>
 $(document).ready(function () {
-    // Save the scroll position in local storage when the page is unloaded
-    window.addEventListener('beforeunload', function() {
-    localStorage.setItem('scrollPosition', window.scrollY);
-    });
+    if($('#hide_kode_kab').val()) {
+        // Save the scroll position in local storage when the page is unloaded
+        window.addEventListener('beforeunload', function() {
+        localStorage.setItem('scrollPosition', window.scrollY);
+        });
 
-    // Retrieve the scroll position from local storage when the page is loaded
-    window.addEventListener('load', function() {
-    var scrollPosition = localStorage.getItem('scrollPosition');
-        if (scrollPosition !== null) {
-            window.scrollTo(0, scrollPosition);
-            localStorage.removeItem('scrollPosition');
-        }
-    });
+        // Retrieve the scroll position from local storage when the page is loaded
+        window.addEventListener('load', function() {
+        var scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition !== null) {
+                window.scrollTo(0, scrollPosition);
+                localStorage.removeItem('scrollPosition');
+            }
+        });
+    }
 
     $('#example').DataTable({
         "bLengthChange": false,

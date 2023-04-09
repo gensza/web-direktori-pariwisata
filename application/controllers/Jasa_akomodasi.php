@@ -90,6 +90,17 @@ class Jasa_akomodasi extends CI_Controller
         $this->load->view('components/footer/footer');
     }
 
+    public function jasa_akomodasi_download()
+    {
+        $id = $this->uri->segment('3');
+        $result = $this->detail($id);
+        $data['d_a'] = $result->data[0];
+        $data['nama_file'] = 'akomodasi';
+
+        $this->load->view('pages/jasaAkomodasi/jasa_akomodasi_download',$data);
+
+    }
+
     public function jasa_akomodasi_sekitar()
     {
         $kode_prov = $this->uri->segment('3');

@@ -24,7 +24,14 @@
                         </div>
                     </div>
                     <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-                        <h2><strong><?= $d_d->nama_komersial ?></strong></h2>
+                        <div class="row justify-content-between">
+                            <div class="col-md-9">
+                                <h2><strong><?= $d_d->nama_komersial ?></strong></h2>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <a href="<?= base_url('Daya_tarik_wisata/dtw_download/'.$d_d->id) ?>" target="_blank" class="btn btn-danger">Download Direktori</a>
+                            </div>
+                        </div>
                         <p class="rate mb-1">
                             <span class="star"><strong>Kodepos : <?= $d_d->kodepos ?></strong></span> <br />
                             <span class="loc"><a><i class="icon-map"></i> <?= $d_d->alamat_jalan ?></a></span>
